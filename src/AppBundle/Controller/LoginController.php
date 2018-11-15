@@ -6,17 +6,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class LoginController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/login", name="loginpage")
      */
     public function indexAction(Request $request)
     {
+
+        $session = $this->container->get('session');
+        //$session->set('user','rgz');
+        //var_export($session->get('user'));
         // replace this example code with whatever you need
-//echo ('fdsfqsd');
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        return $this->render('default/login.html.twig', [
+            'user' => $session->get('user'),
         ]);
     }
 }
